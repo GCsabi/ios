@@ -947,7 +947,14 @@ NSString * NotReachableNetworkForDownloadsNotification = @"NotReachableNetworkFo
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     //For iOS8 we need to change the checking to this method, for show as a first step the pincode screen
     [self closeAlertViewAndViewControllers];
-    [self performSelector:@selector(checkIfIsNecesaryShowPassCodeWillResignActive) withObject:nil afterDelay:0.5];
+
+    UIViewController *topView = [self topViewController];
+    
+    if (topView) {
+        if (![topView isKindOfClass:[SSOViewController class]]) {
+            [self performSelector:@selector(checkIfIsNecesaryShowPassCodeWillResignActive) withObject:nil afterDelay:0.5];
+        }
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

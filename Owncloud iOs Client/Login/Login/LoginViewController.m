@@ -2534,7 +2534,10 @@ NSString *loginViewControllerRotate = @"loginViewControllerRotate";
 }
 
 - (void) closeViewController {
+    AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [app checkIfIsNecesaryShowPassCodeWillResignActive];
     [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 @end
